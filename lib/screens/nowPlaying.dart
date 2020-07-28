@@ -55,6 +55,7 @@ class _NowPlayingState extends State<NowPlaying> {
           height: DEVSIZE.height,
           width: DEVSIZE.width,
           child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
