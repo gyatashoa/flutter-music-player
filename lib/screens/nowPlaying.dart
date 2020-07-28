@@ -63,21 +63,21 @@ class _NowPlayingState extends State<NowPlaying> {
                   child: Container(
                     height: DEVSIZE.height * (0.30),
                     width: DEVSIZE.width * (0.6),
-                    color: Colors.red,
+                    child: Image.asset("assets/images/1997.jpeg",fit: BoxFit.cover,),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 10.0),
                   child: Text(
-                    "Toosie Slide",
+                    "1997",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                   ),
                 ),
                 Text(
-                  "Drake",
+                  "Yaa Pono",
                   style: TextStyle(color: Colors.black45, fontSize: 16),
                 ),
-                Slider.adaptive(
+                Slider(
                     activeColor: BLACK_THEME,
                     inactiveColor: BLACK_THEME.withOpacity(0.3),
                     value: .1,
