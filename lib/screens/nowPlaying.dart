@@ -52,103 +52,108 @@ class _NowPlayingState extends State<NowPlaying> {
           ),
         ),
         body: Container(
-          height: double.infinity,
-          child: Column(
-            children: <Widget>[
-              Align(
-                child: Container(
-                  height: DEVSIZE.height * (0.35),
-                  width: DEVSIZE.width * (0.6),
-                  color: Colors.red,
+          height: DEVSIZE.height,
+          width: DEVSIZE.width,
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Align(
+                  child: Container(
+                    height: DEVSIZE.height * (0.30),
+                    width: DEVSIZE.width * (0.6),
+                    color: Colors.red,
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Text(
-                  "Toosie Slide",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Text(
+                    "Toosie Slide",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
                 ),
-              ),
-              Text(
-                "Drake",
-                style: TextStyle(color: Colors.black45, fontSize: 16),
-              ),
-              Slider.adaptive(
-                  activeColor: BLACK_THEME,
-                  inactiveColor: BLACK_THEME.withOpacity(0.3),
-                  value: .1,
-                  onChanged: (val) {}),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[Text("2:04"), Text("-2.04")],
+                Text(
+                  "Drake",
+                  style: TextStyle(color: Colors.black45, fontSize: 16),
                 ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: <Widget>[
-                    CustomButton(
-                      Icon(
-                        Icons.skip_previous,
-                        size: 28,
-                      ),
-                      offset: Offset(1, 2),
-                      width: 40,
-                      height: 40,
-                    ),
-                    CustomButton(
-                      Icon(
-                        Icons.play_arrow,
-                        size: 28,
-                      ),
-                      offset: Offset(1, 2),
-                      width: 60,
-                      height: 60,
-                    ),
-                    CustomButton(
-                      Icon(
-                        Icons.skip_next,
-                        size: 28,
-                      ),
-                      offset: Offset(1, 2),
-                      width: 40,
-                      height: 40,
-                    )
-                  ],
+                Slider.adaptive(
+                    activeColor: BLACK_THEME,
+                    inactiveColor: BLACK_THEME.withOpacity(0.3),
+                    value: .1,
+                    onChanged: (val) {}),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[Text("2:04"), Text("-2.04")],
+                  ),
                 ),
-              ),
-              Expanded(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20.0, vertical: 40),
-                    child: Row(
-                      children: <Widget>[
-                        Icon(Icons.volume_down),
-                        Expanded(
-                          child: Slider(
-                              activeColor: BLACK_THEME,
-                              inactiveColor: BLACK_THEME.withOpacity(0.3),
-                              value: _currentVolume,
-                              onChanged: (val) {
-                                setState(() {
-                                  _currentVolume = val;
-                                });
-                              }),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 70, vertical: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      CustomButton(
+                        Icon(
+                          Icons.skip_previous,
+                          size: 28,
                         ),
-                        Icon(Icons.volume_up),
+                        offset: Offset(1, 2),
+                        width: 40,
+                        height: 40,
+                      ),
+                      CustomButton(
+                        Icon(
+                          Icons.play_arrow,
+                          size: 28,
+                        ),
+                        offset: Offset(1, 2),
+                        width: 60,
+                        height: 60,
+                      ),
+                      CustomButton(
+                        Icon(
+                          Icons.skip_next,
+                          size: 28,
+                        ),
+                        offset: Offset(1, 2),
+                        width: 40,
+                        height: 40,
+                      )
+                    ],
+                  ),
+                ),
+                Flexible(
+                    fit: FlexFit.loose,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 20),
+                          child: Row(
+                            children: <Widget>[
+                              Icon(Icons.volume_down),
+                              Expanded(
+                                child: Slider(
+                                    activeColor: BLACK_THEME,
+                                    inactiveColor: BLACK_THEME.withOpacity(0.3),
+                                    value: _currentVolume,
+                                    onChanged: (val) {
+                                      setState(() {
+                                        _currentVolume = val;
+                                      });
+                                    }),
+                              ),
+                              Icon(Icons.volume_up),
+                            ],
+                          ),
+                        )
                       ],
-                    ),
-                  )
-                ],
-              ))
-            ],
+                    ))
+              ],
+            ),
           ),
         ),
       ),
