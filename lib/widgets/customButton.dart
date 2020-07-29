@@ -6,23 +6,27 @@ class CustomButton extends StatelessWidget {
   final double width;
   final double height;
   final Offset offset;
-  CustomButton(this.child, {this.offset,this.height,this.width});
+  final Function onClick;
+  CustomButton(this.child, {this.offset, this.height, this.width, this.onClick});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      child: child,
-      decoration: BoxDecoration(
-          color: WHITE_THEME,
-          borderRadius: BorderRadius.circular(10),
-          boxShadow: [
-            BoxShadow(
-                color: Colors.black12,
-                offset: offset,
-                spreadRadius: 2,
-                blurRadius: 5)
-          ]),
+    return InkWell(
+      onTap: onClick,
+      child: Container(
+        width: width,
+        height: height,
+        child: child,
+        decoration: BoxDecoration(
+            color: WHITE_THEME,
+            borderRadius: BorderRadius.circular(10),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black12,
+                  offset: offset,
+                  spreadRadius: 2,
+                  blurRadius: 5)
+            ]),
+      ),
     );
   }
 }

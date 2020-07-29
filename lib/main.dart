@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:music_player/screens/nowPlaying.dart';
 
 import 'config/colors.dart';
+import 'screens/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Music Player',
       theme: currentTheme()
-,      home: NowPlaying(),
+,      home: Home(),
     );
   }
 }

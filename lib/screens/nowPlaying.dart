@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_player/config/colors.dart';
+import 'package:music_player/models/music.dart';
 import 'package:music_player/widgets/customButton.dart';
 
 class NowPlaying extends StatefulWidget {
@@ -30,6 +31,7 @@ class _NowPlayingState extends State<NowPlaying> {
                   ),
                   offset: Offset(1, 2),
                   width: 40,
+                  onClick: () => Navigator.pop(context),
                 ),
               ),
               title: Text(
@@ -63,7 +65,10 @@ class _NowPlayingState extends State<NowPlaying> {
                   child: Container(
                     height: DEVSIZE.height * (0.30),
                     width: DEVSIZE.width * (0.6),
-                    child: Image.asset("assets/images/1997.jpeg",fit: BoxFit.cover,),
+                    child: Image.asset(
+                      "assets/images/1997.jpeg",
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Padding(

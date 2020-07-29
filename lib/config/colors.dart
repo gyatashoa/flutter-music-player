@@ -12,5 +12,8 @@ const Color BLACK_THEME = Color.fromRGBO(43, 43, 43, 1);
 
 ThemeData currentTheme() => ThemeData(
   primaryColor: WHITE_THEME,
-  scaffoldBackgroundColor: WHITE_THEME
+  scaffoldBackgroundColor: WHITE_THEME,
+  indicatorColor: BLACK_THEME,
+  dividerColor: BLACK_THEME,
+  primarySwatch: Colors.grey
 );
