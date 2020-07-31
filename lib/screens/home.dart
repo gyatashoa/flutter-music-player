@@ -1,3 +1,4 @@
+import 'package:flute_music_player/flute_music_player.dart';
 import 'package:flutter/material.dart';
 import 'package:music_player/tabs/albums.dart';
 import 'package:music_player/tabs/playlist.dart';
@@ -10,12 +11,22 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  MusicFinder audioPlayer;
+
   TabController _mainTabController;
 
   @override
   void initState() {
     super.initState();
     _mainTabController = TabController(length: 3, vsync: this);
+    audioPlayer = new MusicFinder();
+    _getSongs();
+  }
+
+  void _getSongs() async {
+    var songs = await MusicFinder.allSongs();
+    List allSongs = List.from(songs);
+    print(allSongs);
   }
 
   List<Widget> _getBottomTabs() => [
@@ -39,7 +50,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           actions: <Widget>[
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: CustomButton(Icon(Icons.settings),offset: Offset(1,2),width: 40,),
+              child: CustomButton(
+                Icon(Icons.settings),
+                offset: Offset(1, 2),
+                width: 40,
+              ),
             )
           ],
         ),
@@ -50,10 +65,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             ),
             Expanded(
                 child: Container(
-              child:
-                  TabBarView(
-                    controller: _mainTabController,
-                    children: <Widget>[SongsTab(), Albums(), PlayList()]),
+              child: TabBarView(
+                  controller: _mainTabController,
+                  children: <Widget>[SongsTab(), Albums(), PlayList()]),
             ))
           ],
         ),
