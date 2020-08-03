@@ -1,9 +1,11 @@
-import 'package:flute_music_player/flute_music_player.dart';
+// import 'package:flute_music_player/flute_music_player.dart';
 import 'package:flutter/material.dart';
-import 'package:music_player/tabs/albums.dart';
-import 'package:music_player/tabs/playlist.dart';
-import 'package:music_player/tabs/songs.dart';
-import 'package:music_player/widgets/customButton.dart';
+
+import '../tabs/albums.dart';
+import '../tabs/playlist.dart';
+import '../tabs/songs.dart';
+import '../widgets/customButton.dart';
+
 
 class Home extends StatefulWidget {
   @override
@@ -11,7 +13,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
-  MusicFinder audioPlayer;
+  // MusicFinder audioPlayer;
 
   TabController _mainTabController;
 
@@ -19,15 +21,15 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   void initState() {
     super.initState();
     _mainTabController = TabController(length: 3, vsync: this);
-    audioPlayer = new MusicFinder();
-    _getSongs();
+    // audioPlayer = new MusicFinder();
+    // _getSongs();
   }
 
-  void _getSongs() async {
-    var songs = await MusicFinder.allSongs();
-    List allSongs = List.from(songs);
-    print(allSongs);
-  }
+  // void _getSongs() async {
+  //   var songs = await MusicFinder.allSongs();
+  //   List allSongs = List.from(songs);
+  //   print(allSongs);
+  // }
 
   List<Widget> _getBottomTabs() => [
         Tab(child: Text("Songs")),

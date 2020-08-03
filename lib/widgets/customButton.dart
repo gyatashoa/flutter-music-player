@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:music_player/config/colors.dart';
+
+import '../config/colors.dart';
 
 class CustomButton extends StatelessWidget {
   final Widget child;

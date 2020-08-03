@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:music_player/config/colors.dart';
-import 'package:music_player/main.dart';
-import 'package:music_player/models/music.dart';
-import 'package:music_player/screens/nowPlaying.dart';
+
+import '../screens/nowPlaying.dart';
 
 class SongsTab extends StatelessWidget {
   void _playSong(BuildContext context) {

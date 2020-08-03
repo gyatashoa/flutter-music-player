@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:music_player/config/colors.dart';
-import 'package:music_player/models/music.dart';
-import 'package:music_player/widgets/customButton.dart';
+import 'package:music_player/music_player.dart';
+import '../config/colors.dart';
+import '../widgets/customButton.dart';
 
 class NowPlaying extends StatefulWidget {
   @override
@@ -10,6 +10,18 @@ class NowPlaying extends StatefulWidget {
 
 class _NowPlayingState extends State<NowPlaying> {
   double _currentVolume = 1;
+
+  MusicPlayer musicPlayer;
+
+  @override
+  void initState() {
+    super.initState();
+    initPlatformState();
+  }
+
+   Future<void> initPlatformState()  {
+    musicPlayer =  MusicPlayer();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,6 +129,14 @@ class _NowPlayingState extends State<NowPlaying> {
                         offset: Offset(1, 2),
                         width: 60,
                         height: 60,
+                        onClick: ()=> musicPlayer.play(MusicItem(
+                          trackName: 'Sample',
+                          albumName: 'Sample Album',
+                          artistName: 'Sample Artist',
+                          url: 'https://goo.gl/5RQjTQ',
+                          coverUrl: 'https://goo.gl/Wd1yPP',
+                          duration: Duration(seconds: 255),
+                        )),
                       ),
                       CustomButton(
                         Icon(
