@@ -1,11 +1,12 @@
 // import 'package:flute_music_player/flute_music_player.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_audio_query/flutter_audio_query.dart';
+import 'package:flutter_music_player/services/fetchSongs.dart';
 
 import '../tabs/albums.dart';
 import '../tabs/playlist.dart';
 import '../tabs/songs.dart';
 import '../widgets/customButton.dart';
-
 
 class Home extends StatefulWidget {
   @override
@@ -16,20 +17,23 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   // MusicFinder audioPlayer;
 
   TabController _mainTabController;
-
+  FetchSongs fetchSongs;
+  List<SongInfo> songs;
   @override
   void initState() {
     super.initState();
     _mainTabController = TabController(length: 3, vsync: this);
     // audioPlayer = new MusicFinder();
-    // _getSongs();
+    fetchSongs = FetchSongs();
+    _getSongs();
   }
 
-  // void _getSongs() async {
-  //   var songs = await MusicFinder.allSongs();
-  //   List allSongs = List.from(songs);
-  //   print(allSongs);
-  // }
+  void _getSongs() async {
+    songs = await fetchSongs.getSongs();
+    setState(() {
+      
+    });
+  }
 
   List<Widget> _getBottomTabs() => [
         Tab(child: Text("Songs")),
@@ -60,19 +64,27 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             )
           ],
         ),
-        body: Column(
-          children: <Widget>[
-            Divider(
-              height: 0,
-            ),
-            Expanded(
-                child: Container(
-              child: TabBarView(
-                  controller: _mainTabController,
-                  children: <Widget>[SongsTab(), Albums(), PlayList()]),
-            ))
-          ],
-        ),
+        body: songs == null
+            ? Center(child: CircularProgressIndicator())
+            : Column(
+                children: <Widget>[
+                  Divider(
+                    height: 0,
+                  ),
+                  Expanded(
+                      child: Container(
+                    child: TabBarView(
+                        controller: _mainTabController,
+                        children: <Widget>[
+                          SongsTab(
+                            songs: songs,
+                          ),
+                          Albums(),
+                          PlayList()
+                        ]),
+                  ))
+                ],
+              ),
       ),
     );
   }
